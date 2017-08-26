@@ -2,6 +2,7 @@
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
+const { save } = require('./controller');
 // const studentsFile = `${__dirname}/assets/students.json`;
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -10,7 +11,7 @@ let win;
 
 function createWindow() {
     // Create the browser window.
-    win = new BrowserWindow({ width: 1100, height: 700 });
+    win = new BrowserWindow({ width: 1100, height: 600 });
 
     //win.setMenuBarVisibility(false);
 
@@ -49,37 +50,12 @@ app.on('activate', () => {
 });
 
 //CRUD like methods for editing simple students.json file
-// ipcMain.on('getStudents', function(event, arg) {
-//     fs.readFile(studentsFile, function(err, data) {
-//         if (err) throw err;
-//         objTrue = JSON.parse(data);
-//         event.returnValue = objTrue;
-//     });
-// });
 
-// ipcMain.on('addStudent', function(event, arg) {
-//     fs.writeFile(studentsFile, arg, (err) => {
-//         if (err) {
-//             console.log(err);
-//             event.returnValue = "N";
-//         } else {
-//             console.log("Saved");
-//             event.returnValue = "Y";
-//         }
-//     });
-// });
-
-// ipcMain.on('addClass', function(event, arg) {
-//     fs.writeFile(studentsFile, arg, (err) => {
-//         if (err) {
-//             console.log(err);
-//             event.returnValue = "N";
-//         } else {
-//             console.log("Saved");
-//             event.returnValue = "Y";
-//         }
-//     });
-// });
+ipcMain.on('TestService', function(event, arg) {
+    event.returnValue = save();
+    // fs.writeFile(studentsFile, arg, (err) => {
+    // });
+});
 
 // ipcMain.on('getSounds', function(event, args) {
 //     event.returnValue = [`${__dirname}/assets/sounds/drumroll.mp3`];
