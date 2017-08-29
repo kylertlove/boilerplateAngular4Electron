@@ -2,7 +2,7 @@
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
-const { save } = require('./controller');
+const { testElectronService } = require('./controller');
 // const studentsFile = `${__dirname}/assets/students.json`;
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -49,14 +49,7 @@ app.on('activate', () => {
     }
 });
 
-//CRUD like methods for editing simple students.json file
 
 ipcMain.on('TestService', function(event, arg) {
-    event.returnValue = save();
-    // fs.writeFile(studentsFile, arg, (err) => {
-    // });
+    event.returnValue = testElectronService();
 });
-
-// ipcMain.on('getSounds', function(event, args) {
-//     event.returnValue = [`${__dirname}/assets/sounds/drumroll.mp3`];
-// })

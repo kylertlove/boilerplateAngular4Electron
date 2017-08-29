@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   testElectronCall = () => {
     this.callWork = this.electronService.ipcRenderer.sendSync('TestService');
   }
