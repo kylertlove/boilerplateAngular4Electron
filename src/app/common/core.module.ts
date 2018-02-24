@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../components/home/home.component';
 import { NgxElectronModule } from 'ngx-electron';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
 
 const routes:Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -13,9 +15,10 @@ const routes:Routes = [
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule.forRoot(routes), NgxElectronModule, NgbModule
+    CommonModule, RouterModule.forRoot(routes), NgxElectronModule, 
+    BrowserAnimationsModule, FlexLayoutModule, MaterialModule
   ],
   exports:[RouterModule],
   declarations: [HomeComponent]
 })
-export class MainCommonModule { }
+export class CoreModule { }

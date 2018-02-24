@@ -16,6 +16,10 @@ export class HomeComponent implements OnInit {
   }
   
   testElectronCall = () => {
-    this.callWork = this.electronService.ipcRenderer.sendSync('TestService');
+    if(this.electronService.isElectronApp){
+      this.callWork = this.electronService.ipcRenderer.sendSync('TestService');
+    }else{
+      this.callWork = "This is running in a browser and not in electron";
+    }
   }
 }
