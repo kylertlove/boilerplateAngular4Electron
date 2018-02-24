@@ -2,8 +2,7 @@
 
 # Angular 5/Electron Boilerplate
 ### Included:
-- Angular 5 boilerplate with an already configured router, ngx-electron, Angular Material, and font-awesome icons
-- Electron base config with ipcmain already set up
+- [Angular](https://angular.io/) 5 boilerplate with already configured baseline Router, [ngx-electron](https://github.com/ThorstenHans/ngx-electron), [Angular Material](https://material.angular.io/), [font-awesome](https://fontawesome.com/) icons, and ipcmain 
 <br><br>
 
 ### To Run build (must have Node & NPM installed)
