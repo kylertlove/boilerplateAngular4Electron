@@ -50,7 +50,12 @@ app.on('activate', () => {
     }
 });
 
-
-ipcMain.on('TestService', (event, arg) => {
+ipcMain.on('TestAsyncService', (event, arg) => {
+    setTimeout(() => {
+        console.log('Async Message Reply')
+        event.sender.send('TestAsyncReply', 'Async Message Reply');
+    }, 1000);
+});
+ipcMain.on('TestSyncService', (event, arg) => {
     event.returnValue = testElectronService();
 });

@@ -1,12 +1,13 @@
-
 <div fxLayout="row" style="margin-top:10vh;">
     <mat-card fxFlex="33" fxFlexOffset="33" class="mainCard" fxFlexFill>
-            <h1>{{appName}}</h1>
-            <mat-icon>home</mat-icon>
-            <br>
-            <button (click)="testElectronCall()" mat-raised-button color="primary">
+        <h1>{{appName}}
+        </h1>
+        <br>
+        <button (click)="testElectronCall()" mat-raised-button color="primary">
                 Test Electron Call
+            <mat-icon>home</mat-icon>
             </button>
-            <h3>{{callWork}}</h3>
+        <h4>{{syncCall}}</h4>
+        <h4>{{asyncCall}}</h4>
     </mat-card>
 </div>

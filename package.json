@@ -13,7 +13,7 @@
         "build-prod-linux": "ng build --prod --base-href . && cp src/electron/* dist",
         "build-prod-win": "ng build --prod --base-href . && copy src\\electron\\* dist",
         "build-prod-mac": "ng build --prod --base-href . && cp src/electron/* dist",
-        "electron-win": "npm run build-linux && electron ./dist/electron.js",
+        "electron-win": "npm run build-win && electron ./dist/electron.js",
         "electron-linux": "npm run build-linux && electron ./dist/electron.js",
         "electron-mac": "npm run build-mac && electron ./dist/electron.js",
         "package-windows": "npm install && npm run build-prod-win && copy package.json dist && cd dist && electron-packager .",

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ElectronService } from "ngx-electron";
 
 @Component({
@@ -9,17 +9,31 @@ import { ElectronService } from "ngx-electron";
 export class HomeComponent implements OnInit {
 
   appName:string = "Desktop App";
-  callWork:string = "";
-  constructor(private electronService:ElectronService) { }
+  syncCall:string = "";
+  asyncCall:string = "";
+  constructor(private electronService:ElectronService, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
-  }
-  
-  testElectronCall = () => {
+    //Async Listener
     if(this.electronService.isElectronApp){
-      this.callWork = this.electronService.ipcRenderer.sendSync('TestService');
-    }else{
-      this.callWork = "This is running in a browser and not in electron";
+      this.electronService.ipcRenderer.on('TestAsyncReply', (event, args) => {
+        this.asyncCall = args;
+        //zone.js doesnt detect changes on ipc.  manually detect
+        this.ref.detectChanges();
+      });
     }
   }
+  
+  testElectronCall() {
+    //sync Listener
+    if(this.electronService.isElectronApp){
+      this.syncCall = this.electronService.ipcRenderer.sendSync('TestSyncService');
+      this.electronService.ipcRenderer.send('TestAsyncService');
+    }else{
+      this.syncCall = "This is running in a browser and not in electron";
+    }
+  }
+
+  
+
 }
