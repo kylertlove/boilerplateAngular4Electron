@@ -2,7 +2,8 @@
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
-const { testElectronService } = require('./controller');
+const { buildIpc } = require('./controller');
+//const { testElectronService } = require('./controller');
 // const studentsFile = `${__dirname}/assets/students.json`;
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -25,6 +26,8 @@ function createWindow() {
         // when you should delete the corresponding element.
         win = null;
     });
+
+    buildIpc(ipcMain);
 }
 
 // This method will be called when Electron has finished
@@ -48,14 +51,4 @@ app.on('activate', () => {
     if (win === null) {
         createWindow();
     }
-});
-
-ipcMain.on('TestAsyncService', (event, arg) => {
-    setTimeout(() => {
-        console.log('Async Message Reply')
-        event.sender.send('TestAsyncReply', 'Async Message Reply');
-    }, 1000);
-});
-ipcMain.on('TestSyncService', (event, arg) => {
-    event.returnValue = testElectronService();
 });
