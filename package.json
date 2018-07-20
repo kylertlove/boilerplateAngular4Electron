@@ -16,9 +16,9 @@
         "electron-win": "npm run build-win && electron ./dist/electron.js",
         "electron-linux": "npm run build-linux && electron ./dist/electron.js",
         "electron-mac": "npm run build-mac && electron ./dist/electron.js",
-        "package-windows": "npm install && npm run build-prod-win && copy package.json dist && cd dist && electron-packager .",
-        "package-linux": "npm install && npm run build-prod-linux && cp package.json dist && cd dist && electron-packager .",
-        "package-mac": "npm install && npm run build-prod-mac && cp package.json dist && cd dist && electron-packager ."
+        "package-windows": "npm install && npm run build-prod-win && cd dist && npm install && electron-packager . --overwrite --asar",
+        "package-linux": "npm install && npm run build-prod-linux && cd dist && npm install && electron-packager . --overwrite --asar",
+        "package-mac": "npm install && npm run build-prod-mac && cd dist && npm install && electron-packager . --overwrite --asar"
     },
     "private": true,
     "dependencies": {
