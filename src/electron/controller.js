@@ -1,9 +1,3 @@
-// module.exports.testElectronService = () => {
-//     let x = "Sync message reply from Controller.js";
-//     console.log(x);
-//     return x;
-// }
-
 //consts dont get copied to dist on build.  location is where it is after file movement
 const { IPC_CONSTANTS } = require('../src/assets/constants');
 
