@@ -5,5 +5,5 @@
 module.exports.IPC_CONSTANTS = {
     ASYNC_TEST: "asyctest",
     SYNC_TEST: "synctest",
-    SYNC_REPLY: "syncReply"
+    ASYNC_REPLY: "syncReply"
 }

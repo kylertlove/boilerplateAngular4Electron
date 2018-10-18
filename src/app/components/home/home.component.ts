@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     //Async Listener
     if(this.electronService.isElectronApp){
-      this.electronService.ipcRenderer.on(IPC_CONSTANTS.SYNC_REPLY, (event, args) => {
+      this.electronService.ipcRenderer.on(IPC_CONSTANTS.ASYNC_REPLY, (event, args) => {
         //zone.js doesnt detect changes on ipc.  manually detect
         this.zone.run(() => {
           this.asyncCall = args;
